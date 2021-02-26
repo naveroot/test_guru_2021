@@ -5,10 +5,15 @@ class Test < ApplicationRecord
     belongs_to :category, optional: true
     belongs_to :author, class_name: 'User'
 
+    scope :easy, -> { where(level: 0..1) }
+    scope :medium, -> { where(level: 2..4) }
+    scope :hard, -> { where(level: 5..Float::INFINITY) }
+    scope :by_category, ->(category) { joins(:category).where(categories: { title: category }) }
+
+    validates :title, presence: true, uniqueness: { scope: :level }
+    validates :level, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
     def self.titles_by_category(category)
-        joins('JOIN categories ON categories.id = tests.categories_id')
-        .where(categories: { title: category})
-        .order(title: :desc)
-        .pluck(:title)
+        by_category(category).pluck(:title)
     end
 end

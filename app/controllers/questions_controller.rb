@@ -16,12 +16,11 @@ class QuestionsController < ApplicationController
     end
   
     def new
-      @question = Question.new
+      @question =  @test.questions.new
     end
   
     def create
-      @question = Question.new(question_params)
-      @question.test = @test
+      @question = @test.questions.new(question_params)
       if @question.save
         redirect_to test_questions_path(@question.test)
       else

@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
     has_many :test_passages
     has_many :tests, through: :test_passages
-    has_many :questions
+    has_many :questions, dependent: :delete_all
     belongs_to :category, optional: true
     belongs_to :author, class_name: 'User'
 

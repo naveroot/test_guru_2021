@@ -1,0 +1,15 @@
+h1 Tests
+table 
+  tr
+    th Tests 
+    th Question count 
+    th Actions
+
+    - @tests.each do |test|
+      tr
+        td = link_to test.title, test_questions_path(test)
+        td = test.questions.count
+        td 
+            = link_to "Edit", edit_test_path(test)
+            = link_to "Show", test_path(test)
+            = link_to 'Delete', test_path(test), method: :delete, data: { confirm: 'Are you sure?' }

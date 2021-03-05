@@ -1,0 +1,13 @@
+h1 = question_header(question)
+
+= form_with(model: [test, question]) do |form|
+  = render 'shared/errors', resourse: question 
+  p
+    .field
+      = form.label :body
+      = form.text_field :body 
+  p 
+    .actions
+      = form.submit
+
+=render 'shared/links'

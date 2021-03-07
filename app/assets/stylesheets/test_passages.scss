@@ -1,0 +1,39 @@
+// Place all the styles related to the test_passages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+ul.check-box-form {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+ul.check-box-form li {
+  position: relative;
+  margin: 10px;
+  padding: 0;
+}
+.inthis{
+  text-align:center;
+  // width:60%;
+  padding:10pt;
+  border-radius:4pt;}
+  
+.block{
+  margin:10pt;
+  padding:10pt;
+  border:1px solid black;
+  border-radius:4pt;
+  width:100px;
+  display:inline-block;
+  vertical-align: middle;
+}

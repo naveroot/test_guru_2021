@@ -1,0 +1,7 @@
+div align='center'
+  h1 Test "#{@test_passage.test.title}" compleat!
+  div
+    | #{@test_passage.percent_of_correct_answers}%
+    br = result_message(@test_passage)
+  p 
+    = link_to 'Try agein?', tests_path

@@ -4,6 +4,16 @@ Rails.application.routes.draw do
     resources :questions, shallow: true do
       resources :answers, shallow: true, exept: :index
     end
+
+    member do
+      post :start
+    end
+  end
+
+  resources :test_passages, only: [:show, :update] do
+    member do
+      get :result
+    end
   end
 
   root to: 'tests#index'

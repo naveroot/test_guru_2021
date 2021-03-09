@@ -1,11 +1,10 @@
+# frozen_string_literal: true
+
 class TestPassagesController < ApplicationController
   before_action :find_test_passage
-  def show
+  def show; end
 
-  end
-
-  def result
-  end
+  def result; end
 
   def update
     @test_passage.accept!(params[:answer_ids])
@@ -26,5 +25,4 @@ class TestPassagesController < ApplicationController
   def find_test_passage
     @test_passage = TestPassage.find(params[:id])
   end
-
 end

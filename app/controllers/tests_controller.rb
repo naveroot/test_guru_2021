@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class TestsController < ApplicationController
   before_action :find_test, only: %i[start destroy]
   before_action :find_user, only: :start
-  
+
   def index
     @tests = Test.all
   end

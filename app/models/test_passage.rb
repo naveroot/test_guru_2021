@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class TestPassage < ApplicationRecord
+  MINIMAL_PASS_PERCENT_FOR_SUCCESS = 85
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
@@ -28,7 +31,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    percent_of_correct_answers >= 85
+    percent_of_correct_answers >= MINIMAL_PASS_PERCENT_FOR_SUCCESS
   end
 
   private

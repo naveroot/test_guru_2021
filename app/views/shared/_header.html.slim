@@ -1,5 +1,9 @@
-nav 
-  = link_to "Tests", tests_path
-  p 
-  - if logged_in?
-      | Welcome #{current_user.email}!
+nav
+  h1 = link_to "TestGuru2021 Project", tests_path
+  = welcome_message
+  = navbar_links
+
+  / - if logged_in?
+  /     | Welcome #{current_user.email} guru! | 
+  /     = link_to "Log Out", logout_path
+    

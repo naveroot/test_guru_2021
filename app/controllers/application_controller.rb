@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    cookies[:path] = request.fullpath
+    cookies[:reqested_path] = request.fullpath
     redirect_to login_path unless current_user
+    flash[:allert] = 'Access denied. Please login or signup first/'
   end
 
   def current_user

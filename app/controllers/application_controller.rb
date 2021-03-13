@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
-  def authenticate_user!
-    cookies[:reqested_path] = request.fullpath
-    redirect_to login_path unless current_user
-    flash[:allert] = 'Access denied. Please login or signup first/'
+  def after_sign_in_path_for(*_args)
+    if current_user.admin?
+      admin_tests_path
+    else
+      root_path
+    end
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
-  def logged_in?
-    current_user.present?
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 end

@@ -2,7 +2,7 @@
 
 class TestsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :find_test, only: %i[start destroy]
+  before_action :find_test, only: %i[destroy start]
   before_action :find_user, only: :start
 
   def index
@@ -12,12 +12,6 @@ class TestsController < ApplicationController
   def start
     @user.tests.push(@test)
     redirect_to @user.test_passage(@test)
-  end
-
-  def destroy
-    @test = Test.find(params[:id])
-    @test.destroy!
-    redirect_to tests_path
   end
 
   private

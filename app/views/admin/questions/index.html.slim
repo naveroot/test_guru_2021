@@ -1,0 +1,16 @@
+h1 = "Список вопросов теста: \"#{@test.title}\""
+p 
+    = link_to 'Create Question', new_admin_test_question_path(@test)
+    br = link_to 'Back to Tests', admin_tests_path
+
+table 
+  tr
+    th Questions 
+    th Actions 
+    - @test.questions.each do |question|
+      tr
+        td = link_to question.body, admin_question_path(question)
+        td 
+            = link_to "Edit", edit_admin_question_path(question)
+            = link_to "Show", admin_question_path(question)
+            = link_to 'Delete', admin_question_path(question), method: :delete, data: { confirm: 'Are you sure?' }

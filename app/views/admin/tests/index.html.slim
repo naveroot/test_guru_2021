@@ -1,12 +1,15 @@
 h1 Tests
+p = link_to 'Create Test', new_admin_test_path
 table 
   tr
     th Tests 
     th Question count 
+    th Author
     th Actions
-
+    
     - @tests.each do |test|
       tr
-        td = test.title 
+        td = link_to test.title, admin_test_questions_path(test)
         td = test.questions.count
+        td = test.author.username
         td = test_actions(test)

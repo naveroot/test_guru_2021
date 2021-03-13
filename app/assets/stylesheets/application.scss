@@ -28,3 +28,12 @@
 .main {
   text-align: center;
 }
+
+.flash.notice {
+  border-color: yellow;
+}
+
+.flash.alert {
+  border:1px solid red;
+  border-radius:4pt;
+}

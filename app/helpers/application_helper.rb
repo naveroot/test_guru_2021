@@ -10,22 +10,24 @@ module ApplicationHelper
   end
 
   def flash_messages
-    content_tag :p, flash[:alert], class: 'flash alert' if flash[:alert]
+    html = flash.collect { |key, message| content_tag(:p, message, class: "flash #{key}") }
+    safe_join(html)
   end
 
   def welcome_message
-    content_tag(:h4, "Welcome #{current_user.email} guru!") if current_user
+    content_tag(:h4, "Welcome #{current_user.username}[#{current_user.email}] guru!") if current_user
   end
 
   def navbar_links
     content_tag(:ul, class: 'nav') do
       if current_user
         concat content_tag(:li)
-        concat content_tag(:li, link_to('Log Out', logout_path))
+        concat content_tag(:li, link_to('Log Out', destroy_user_session_path, method: :delete))
         concat content_tag(:li, link_to('Tests', tests_path))
+        concat content_tag(:li, link_to('AdminPanel', admin_tests_path)) if current_user.admin?
       else
-        concat content_tag(:li, link_to('logIn', login_path))
-        concat content_tag(:li, link_to('SignUP', login_path))
+        concat content_tag(:li, link_to('logIn', new_user_session_path))
+        concat content_tag(:li, link_to('SignUP', new_user_registration_path))
       end
     end
   end

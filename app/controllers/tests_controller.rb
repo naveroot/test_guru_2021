@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TestsController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :find_test, only: %i[start destroy]
   before_action :find_user, only: :start
 
@@ -26,6 +27,6 @@ class TestsController < ApplicationController
   end
 
   def find_user
-    @user = User.first
+    @user = current_user
   end
 end

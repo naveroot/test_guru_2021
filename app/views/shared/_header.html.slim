@@ -1,9 +1,7 @@
 nav
-  h1 = link_to "TestGuru2021 Project", tests_path
-  = welcome_message
-  = navbar_links
-
-  / - if logged_in?
-  /     | Welcome #{current_user.email} guru! | 
-  /     = link_to "Log Out", logout_path
-    
+  .container
+    .item 
+      h1 = link_to "TestGuru2021 Project", tests_path
+    .item 
+      strong = "AdminPanel" if current_user&.admin?
+= navbar_links

@@ -30,10 +30,14 @@
 }
 
 .flash.notice {
-  border-color: yellow;
+  border:1px solid rgb(175, 201, 32);
+  background-color: chartreuse;
+  text-align: center;
 }
 
 .flash.alert {
-  border:1px solid red;
-  border-radius:4pt;
+  border:1px solid rgb(255, 0, 43);
+  background-color: chartreuse;
+  text-align: center;
+  border-radius: 10px;
 }

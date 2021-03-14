@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-around;
+  align-items: baseline
+}
+
+.container.item {
+  padding-left: 20px;
+  padding-right: 20px; 
+}
+
+.welcome_message {
+  text-align: center;
+}

@@ -7,11 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(*_args)
-    if current_user.admin?
-      admin_tests_path
-    else
-      root_path
-    end
+    current_user.admin? ? admin_tests_path : root_path
   end
 
   def configure_permitted_parameters

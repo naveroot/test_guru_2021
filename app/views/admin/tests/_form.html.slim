@@ -1,0 +1,23 @@
+
+= form_with(model: [:admin, test], local: true) do |form|
+  = render 'shared/errors', resourse: test 
+  p
+    .field
+      = form.label :title
+      = form.text_field :title 
+
+  p
+    .field
+      = form.label :category_id
+      = form.collection_select :category_id, Category.all, :id, :title
+
+  p
+    .field
+      = form.label :level
+      = form.number_field :level, id: :test_level
+
+  p 
+    .actions
+      = form.submit
+
+=render 'shared/links'

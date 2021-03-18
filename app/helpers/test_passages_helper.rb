@@ -3,9 +3,9 @@
 module TestPassagesHelper
   def result_message(test_passage)
     if test_passage.success?
-      content_tag(:strong, 'You are PASS', class: 'green')
+      tag.strong('You are PASS', class: 'green')
     else
-      content_tag(:strong, 'You are FAIL', class: 'red')
+      tag.strong('You are FAIL', class: 'red')
     end
   end
 

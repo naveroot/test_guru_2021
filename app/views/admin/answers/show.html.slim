@@ -1,0 +1,12 @@
+p id="notice"
+  = notice 
+
+p 
+  | Question: "#{@answer.question.body}"
+  br Answer: "#{@answer.body}"
+
+p Correct: #{@answer.correct}
+
+br = link_to 'Edit', edit_admin_answer_path(@answer)
+br = link_to 'Add one more', :back
+br = link_to 'Back to Question', admin_question_path(@answer.question)

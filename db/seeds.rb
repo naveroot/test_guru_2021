@@ -8,11 +8,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 categories = Category.create! [{ title: 'Ruby' }, { title: 'Rails' }, { title: 'Hanami' }]
-users = User.create! [{ username: 'John Doe', email: 'user1@example.com' },
-                      { username: 'Judy Doe', email: 'user2@example.com' }]
-tests = Test.create! [{ title: 'Best practice ML in modern Ruby', level: 0, category_id: categories[0].id, author_id: 1 },
-                      { title: 'How to build monolite?', level: 1, category_id: categories[1].id, author_id: 1 },
-                      { title: 'Why not Rails?', level: 2, category_id: categories[2].id, author_id: 1 }]
+users = User.create! [{ username: 'John Doe',
+                        email: 'user1@example.com',
+                        password: '1Qaz2wsx',
+                        password_confirmation: '1Qaz2wsx',
+                        type: 'Admin' }]
+tests = Test.create! [{ title: 'Best practice ML in modern Ruby', level: 0, category_id: categories[0].id, author_id: users.first.id },
+                      { title: 'How to build monolite?', level: 1, category_id: categories[1].id,
+                        author_id: users.first.id },
+                      { title: 'Why not Rails?', level: 2, category_id: categories[2].id, author_id: users.first.id }]
 questions = Question.create! [{ body: 'Is ruby dead?',  test_id: tests[0].id },
                               { body: 'Are you happy?', test_id: tests[1].id },
                               { body: 'Hanamimi is kawaimi?',  test_id: tests[2].id }]

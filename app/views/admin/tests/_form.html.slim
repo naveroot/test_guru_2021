@@ -8,8 +8,8 @@
 
   p
     .field
-      = form.label :category_id
-      = form.collection_select :category_id, Category.all, :id, :title
+      = form.label :category
+      = form.collection_select :category_id, Category.all, :id, :title, prompt: true
 
   p
     .field

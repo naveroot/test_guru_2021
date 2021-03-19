@@ -1,0 +1,57 @@
+ru:
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Пожалуйста, выберите значение"
+
+    # Default translation keys for submit and button FormHelper
+    submit:
+      create: 'Создать %{model}'
+      update: 'Изменить %{model}'
+      submit: 'Схохнанить %{model}'
+  buttons:
+    start: "Начать!"
+    edit: "Изменить"
+    delete: "Удалить"
+  links:
+    register: "Зарегистрироваться"
+    signout: 'Выход'
+    signin: "Войти"
+  tests:
+    index:
+      title: "Список тестов"
+      tests: "Тесты"
+      questions_count: "Число вопросов"
+      actions: "Действия"
+  test_passages:
+    show:
+      passing_test: "Сейчас вы проходите %{test} тест"
+      next: 'Следующий вопрос'
+    result:
+      completed: "%{test} тест завершен."
+      success: "Успех! %{user}, ваш результат %{result}.%"
+      fail: "Неудача! %{user}, ваш результат %{result}.%"
+      back: "К списку тестов"
+  shared:
+    header:
+      sign_in: "Войти"
+      sign_out: "Выйти"
+      sign_up: "Регистрация"
+      admin_panel: "Перейти в панель администратора"
+  admin:
+    tests:
+      index:
+        title: "Список тестов"
+        tests: "Тесты"
+        questions_count: "Число вопросов"
+        actions: "Действия"
+        author: "Автор"
+        new_test: "Создать новый тест"
+      create:
+        success: "Тест создан!"
+      new:
+        header: "Создать новый тест"
+      edit:
+        header: "Изменить тест: %{title}"
+      update:
+        success: "Тест успешно изменен"

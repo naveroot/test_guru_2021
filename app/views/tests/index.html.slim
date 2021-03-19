@@ -1,9 +1,9 @@
-h1 Tests
-table 
+h1 =t('.title')
+table align='center'
   tr
-    th Tests 
-    th Question count 
-    th Actions
+    th = t('.tests') 
+    th = t('.questions_count') 
+    th = t('.actions') 
 
     - @tests.each do |test|
       tr
@@ -11,7 +11,4 @@ table
         td = test.questions.count
         td 
           .test_buttons 
-            = button_to 'Start', start_test_path(test), disabled: !user_signed_in?
-            - if user_signed_in? && current_user.admin?
-              = link_to 'Edit', edit_admin_test_path(test)
-              = link_to 'Delete', admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' }
+            = button_to t('buttons.start'), start_test_path(test), disabled: !user_signed_in?

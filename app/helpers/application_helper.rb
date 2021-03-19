@@ -16,15 +16,23 @@ module ApplicationHelper
 
   def navbar_links
     tag.ul(class: 'nav') do
+      concat tag.li(switch_language_button)
       if current_user
         concat tag.li(welcome_message)
-        concat tag.li(link_to('Log Out', destroy_user_session_path, method: :delete))
-        concat tag.li(link_to('Tests', tests_path))
-        concat tag.li(link_to('AdminPanel', admin_tests_path)) if current_user.admin?
+        concat tag.li(link_to(t('.sign_out'), destroy_user_session_path, method: :delete))
+        concat tag.li(link_to(t('.admin_panel'), admin_tests_path)) if current_user.admin?
       else
-        concat tag.li(link_to('logIn', new_user_session_path))
-        concat tag.li(link_to('SignUP', new_user_registration_path))
+        concat tag.li(link_to(t('.sign_in'), new_user_session_path))
+        concat tag.li(link_to(t('.sign_up'), new_user_registration_path))
       end
+    end
+  end
+
+  def switch_language_button
+    if I18n.locale == :ru
+      link_to "[RU]", url_for(locale: :en)
+    else
+      link_to "[EN]", url_for(locale: :ru)
     end
   end
 

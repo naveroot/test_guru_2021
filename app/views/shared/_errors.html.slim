@@ -1,6 +1,6 @@
 - if resourse.errors.present?
   div
-    h2 = pluralize(resourse.errors.count, 'error') 
+    h2 = t('.errors_counter', count: resource.errors.count)
     ul
       - resourse.errors.full_messages.each do |message|
         = message

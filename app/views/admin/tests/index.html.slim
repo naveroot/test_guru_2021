@@ -1,15 +1,21 @@
 h1 Tests
-p = link_to 'Create Test', new_admin_test_path
+p = link_to t('.new_test'), new_admin_test_path
 table align='center'
   tr
-    th Tests 
-    th Question count 
-    th Author
-    th Actions
+    th = t('.tests') 
+    th = t('.questions_count') 
+    th = t('.author')
+    th = t('.actions') 
+
     
     - @tests.each do |test|
       tr
         td = link_to test.title, admin_test_questions_path(test)
         td = test.questions.count
         td = test.author.username
-        td = test_actions(test)
+        td 
+          .test_buttons 
+            = button_to t('buttons.start'), start_test_path(test), disabled: !user_signed_in?
+            br
+            = link_to t('buttons.edit'), edit_admin_test_path(test)
+            = link_to t('buttons.delete'), admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' }
